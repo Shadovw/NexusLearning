@@ -48,7 +48,7 @@
         width: 50%;
         margin: 40px auto;
         color: white;
-        background: black;
+        background: #030E81;
         border-radius: 10px;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         font-size: 14px;
@@ -77,9 +77,9 @@
                 {{#if rows}}
                 {{#each rows}}
                 <div class="card">
-                    <img src="images/itachi.jpg" alt="Avatar" style="width:90%">
                     <div class="card-container">
                         <a href="/team-info?team_name={{this.team_name}}">
+                            <img src="images/mini-logo.png" alt="mini-logo" style="width:100%">
                             <h4><b>{{this.team_name}}</b></h4>
                         </a>
                         {{!-- <p>Architect & Engineer</p> --}}
