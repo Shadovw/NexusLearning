@@ -1,5 +1,7 @@
 const express = require("express");
 const router = new express.Router();
+const storage = require('node-sessionstorage')
+
 const {
     checkAuthenticated,
     checkNotAuthenticated,
@@ -19,6 +21,7 @@ router.get("/teams", [checkAuthenticated], (req, res) => {
     if (req.user.status == "teacher") {
         teacher = true;
         const sql = "SELECT * FROM `teaches_on` WHERE `email` LIKE '" + req.user.email + "'";
+        storage.setItem('user', req.user.email)
         try {
             connection.query(sql, (err, rows) => {
                 // console.log("rows inside tr", rows)

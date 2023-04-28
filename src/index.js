@@ -97,7 +97,10 @@ app.get("/join", (req,res) => {
 app.get('/:room' , (req, res) =>{
     // console.log(req.params);
     
-    res.render('room', { roomID : req.params.room})
+    res.render('room', { roomID : req.params.room,
+    user : req.user.email
+    })
+
 })
 
 io.on('connection', socket =>{

@@ -1,7 +1,7 @@
 // Js for Frontend
 const socket = io('/');
 const videoGrid = document.getElementById('video-grid');
-const myVideo = document.createElement('video');
+var myVideo = document.createElement('video');
 myVideo.muted = true;
 
 // var peer = new Peer(undefined, {
@@ -20,15 +20,16 @@ navigator.mediaDevices.getUserMedia({ //It takes object
     audio: true
 }).then(stream => {
     myVideoStream = stream;
-    addVideoStream(myVideo, stream);
+    addVideoStream(myVideo, stream, peer);
 
 
     peer.on('call', call => {
         call.answer(stream)
-        const video = document.createElement('video');
+        var video = document.createElement('video');
         console.log('User video');
+        console.log(peer.id)
         call.on('stream', userVideoStream => {
-            addVideoStream(video, userVideoStream);
+            addVideoStream(video, userVideoStream , peer);
 
         })
     })
@@ -74,18 +75,21 @@ const connectToNewUser = (userID, stream) => {
     const video = document.createElement('video');
     call.on('stream', userVideoStream => {
         console.log('New user video');
-        addVideoStream(video, userVideoStream);
+        
+        (video, userVideoStream, call.peer);
     })
 
 }
 
-const addVideoStream = (video, stream) => {
-    video.srcObject = stream;
-    video.addEventListener('loadedmetadata', () => {
-        video.play();
-    })
+function addVideoStream(video, stream, peer0) {
+        video.srcObject = stream;
+    video.addEventListener("loadedmetadata", () => {
+      video.play();
+    });
+    video.id = peer0.id; // set video ID as peer ID
     videoGrid.append(video);
-}
+  }
+  
 
 
 const scrollToBottom = () => {

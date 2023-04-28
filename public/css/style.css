@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
 *{
     padding: 0px;
     margin: 0px;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 .nav{
     /* border: 2px solid black; */
@@ -10,9 +10,6 @@
     color: white;
     background: #030E81;
     min-height: 100vh;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-    box-shadow: black 0px 5px 15px;
 }
 #logo{
     margin: 20px 2px;
